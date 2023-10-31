@@ -161,7 +161,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial Narrow" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Tu turno: "/>
+        <Property name="text" type="java.lang.String" value="ESTE ERES TU:"/>
       </Properties>
     </Component>
   </SubComponents>

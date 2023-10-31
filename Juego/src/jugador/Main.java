@@ -134,7 +134,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         lbTurno.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
-        lbTurno.setText("Tu turno: ");
+        lbTurno.setText("ESTE ERES TU:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
