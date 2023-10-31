@@ -69,63 +69,75 @@ public class Main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TicTacToe NetoSolis");
+        setBackground(new java.awt.Color(255, 153, 153));
         setResizable(false);
 
+        M11.setBackground(new java.awt.Color(255, 204, 255));
         M11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 M11ActionPerformed(evt);
             }
         });
 
+        M13.setBackground(new java.awt.Color(255, 204, 255));
         M13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 M13ActionPerformed(evt);
             }
         });
 
+        M12.setBackground(new java.awt.Color(255, 204, 255));
         M12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 M12ActionPerformed(evt);
             }
         });
 
+        M21.setBackground(new java.awt.Color(255, 204, 255));
         M21.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 M21ActionPerformed(evt);
             }
         });
 
+        M22.setBackground(new java.awt.Color(255, 204, 255));
         M22.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 M22ActionPerformed(evt);
             }
         });
 
+        M23.setBackground(new java.awt.Color(255, 204, 255));
         M23.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 M23ActionPerformed(evt);
             }
         });
 
+        M31.setBackground(new java.awt.Color(255, 204, 255));
         M31.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 M31ActionPerformed(evt);
             }
         });
 
+        M32.setBackground(new java.awt.Color(255, 204, 255));
         M32.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 M32ActionPerformed(evt);
             }
         });
 
+        M33.setBackground(new java.awt.Color(255, 204, 255));
         M33.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 M33ActionPerformed(evt);
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Reiniciar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
