@@ -77,7 +77,7 @@ public class Cliente implements Runnable{
                 
                
                 if(XO.equals(mensajes[3])){
-                    JOptionPane.showMessageDialog(frame, "GANASTEEEEEE!");
+                    JOptionPane.showMessageDialog(frame, "GANO!");
                     new Main().setVisible(true);
                     frame.dispose();
                 }else  if("EMPATE".equals(mensajes[3])){
@@ -86,7 +86,7 @@ public class Cliente implements Runnable{
                     frame.dispose();
                 }
                 else  if(!"NADIE".equals(mensajes[3]) && !mensajes[3].equals(mensajes[0])){
-                    JOptionPane.showMessageDialog(frame, "PERDISTE BUUUUU!");
+                    JOptionPane.showMessageDialog(frame, "PERDIO!");
                     new Main().setVisible(true);
                     frame.dispose();
                 }
@@ -109,7 +109,7 @@ public class Cliente implements Runnable{
                 out.writeUTF(datos);
             }
             else{
-                JOptionPane.showMessageDialog(frame, "Espera tu turno");
+                JOptionPane.showMessageDialog(frame, "NO ES TU TURNO AUN");
             }
         } catch (Exception e) {
             e.printStackTrace();
