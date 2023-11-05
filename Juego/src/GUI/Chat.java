@@ -4,19 +4,63 @@
  */
 package GUI;
 
+import Cliente.Cliente1;
+import Servidor1.Servidor1;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.*;
+import java.io.IOException;
+import javax.swing.*;
+import javax.swing.JLabel;
+import javax.swing.text.DefaultCaret;
+
 /**
  *
  * @author elliotfrias
  */
 public class Chat extends javax.swing.JFrame {
 
+    private final String nom;
+     private JTextArea chatTextArea;
+      private Cliente1 cliente;
     /**
      * Creates new form Chat
      */
-    public Chat() {
-        initComponents();
-    }
+    public Chat(String nom) {
+        
+        super(); 
+        this.nom = nom;
 
+        chatTextArea  = new JTextArea(10, 30);
+        chatTextArea.setWrapStyleWord(true);
+        chatTextArea.setLineWrap(true);
+        
+        initComponents();
+        per.setText(nom);
+     
+        FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT); 
+
+        panChat.setLayout(flowLayout);
+
+        panChat.setPreferredSize(new Dimension(647, 354));
+
+        panChat.setLayout(new BoxLayout(panChat, BoxLayout.Y_AXIS));
+
+        JScrollPane scrollPane = new JScrollPane(chatTextArea);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+        DefaultCaret caret = (DefaultCaret) chatTextArea.getCaret();
+        caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+
+        panChat.add(scrollPane);
+        
+        
+        
+        
+       
+
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,38 +70,150 @@ public class Chat extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        pan = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        panChat = new javax.swing.JPanel();
+        chatbox = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        per = new javax.swing.JTextPane();
+        X = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 713, Short.MAX_VALUE)
+        jLabel1.setText("ID");
+
+        panChat.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout panChatLayout = new javax.swing.GroupLayout(panChat);
+        panChat.setLayout(panChatLayout);
+        panChatLayout.setHorizontalGroup(
+            panChatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 647, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 521, Short.MAX_VALUE)
+        panChatLayout.setVerticalGroup(
+            panChatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 354, Short.MAX_VALUE)
+        );
+
+        chatbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chatboxActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("PUBLICAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        per.setEditable(false);
+        jScrollPane1.setViewportView(per);
+
+        X.setText("X");
+        X.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                XActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panLayout = new javax.swing.GroupLayout(pan);
+        pan.setLayout(panLayout);
+        panLayout.setHorizontalGroup(
+            panLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panLayout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addComponent(chatbox, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(52, Short.MAX_VALUE))
+            .addGroup(panLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(X, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panChat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(103, 103, 103))
+        );
+        panLayout.setVerticalGroup(
+            panLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panLayout.createSequentialGroup()
+                .addGroup(panLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(X))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(panLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(19, 19, 19)))
+                .addComponent(panChat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chatbox, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(pan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+   
+     
+    private void chatboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chatboxActionPerformed
+        String mensaje = chatbox.getText();
+        if (!mensaje.isEmpty()) {
+            chatTextArea.append("usuario: "+mensaje + "\n"); // Agregar el mensaje al JTextArea "per"
+            
+            chatbox.setText("");
+            
+        }
+        
+       
+
+    }//GEN-LAST:event_chatboxActionPerformed
+
+    private void XActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XActionPerformed
+        
+        JFrame Game = new Game();
+        Game.setVisible(true);
+        
+        dispose();
+
+
+    }//GEN-LAST:event_XActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+    
+    
+
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -85,16 +241,31 @@ public class Chat extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Chat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
+    
+        Game var = new Game();
+        String nom = var.personaSeleccionada();
+        System.out.println(nom);
+       
+        
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Chat().setVisible(true);
-            }
-        });
+      java.awt.EventQueue.invokeLater(new Runnable() {
+    public void run() {
+        String nom = "Valor que deseas pasar";  // Reemplaza esto con el valor que deseas pasar
+        new Chat(nom).setVisible(true);
+    }
+});
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton X;
+    private javax.swing.JTextField chatbox;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel pan;
+    private javax.swing.JPanel panChat;
+    private javax.swing.JTextPane per;
     // End of variables declaration//GEN-END:variables
 }

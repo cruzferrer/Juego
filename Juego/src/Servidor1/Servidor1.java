@@ -4,49 +4,38 @@
  */
 package Servidor1;
 
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.LinkedList;
-import Servidor1.Hilo1;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author elliotfrias
  */
+
+
 public class Servidor1 {
+    private ServerSocket serverSocket;
+    private List<Socket> clientes = new ArrayList<>();
 
-    private final int puerto = 8080;
-    private final int noConexiones = 2;
-    private LinkedList<Socket> usuarios = new LinkedList<Socket>();
-    private Boolean turno = true;
-    private int turnos = 1;
+    public Servidor1(int puerto, int maxConexiones) throws IOException {
+        serverSocket = new ServerSocket(puerto);
+        serverSocket.setSoTimeout(10000); // Establece un tiempo de espera de 10 segundos para las conexiones
 
-    public void escuchar() {
-        try {
-            ServerSocket servidor = new ServerSocket(puerto, noConexiones);
-            System.out.println("Esperando jugadores....");
-            while (true) {
-                Socket cliente = servidor.accept();
-                usuarios.add(cliente);
-                //Se le genera un turno X o O 
-                int xo = turnos % 2 == 0 ? 1 : 0;
-                turnos++;
-                
-                
-                
-                Runnable run = new Hilo1(cliente, usuarios, 3);
-                Thread hilo = new Thread(run);
-                hilo.start();
+        while (clientes.size() < maxConexiones) {
+            try {
+                Socket clienteSocket = serverSocket.accept();
+                clientes.add(clienteSocket);
+                System.out.println("Nuevo cliente conectado. Total de clientes: " + clientes.size());
+
+            } catch (IOException e) {
+                // Maneja las excepciones si hay problemas con las conexiones
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
+}
 
-    //Funcion main para correr el servidor
-    public static void main(String[] args) {
-        Servidor servidor = new Servidor();
-        servidor.escuchar();
-    }
-}
-}
+

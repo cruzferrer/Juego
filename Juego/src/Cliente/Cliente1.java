@@ -8,6 +8,29 @@ package Cliente;
  *
  * @author elliotfrias
  */
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+
 public class Cliente1 {
-    
+    private Socket socket;
+    private BufferedReader entrada;
+    private PrintWriter salida;
+
+    public Cliente1(String servidor, int puerto) throws IOException {
+        socket = new Socket(servidor, puerto);
+        entrada = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        salida = new PrintWriter(socket.getOutputStream(), true);
+    }
+
+    public String recibirMensaje() throws IOException {
+        return entrada.readLine();
+    }
+
+    public void enviarMensaje(String mensaje) {
+        salida.println(mensaje);
+    }
 }
+

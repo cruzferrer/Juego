@@ -4,6 +4,10 @@
  */
 package GUI;
 
+import java.net.URL;
+import javax.swing.ImageIcon;
+
+
 /**
  *
  * @author elliotfrias
@@ -13,10 +17,17 @@ public class Game extends javax.swing.JFrame {
     /**
      * Creates new form Game
      */
-    public Game() {
+     String personaSeleccionada = "";
+     
+    
+    public Game() { 
         initComponents();
     }
-
+    
+    
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -237,9 +248,6 @@ public class Game extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 persona24MouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                persona24MouseEntered(evt);
-            }
         });
 
         persona25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/persona25.jpg"))); // NOI18N
@@ -250,7 +258,6 @@ public class Game extends javax.swing.JFrame {
         });
 
         jButton1.setBackground(new java.awt.Color(255, 102, 153));
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("CHAT");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -275,14 +282,19 @@ public class Game extends javax.swing.JFrame {
                             .addComponent(persona11)
                             .addComponent(persona16)
                             .addComponent(persona21))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(persona2)
-                            .addComponent(persona7)
-                            .addComponent(persona12)
-                            .addComponent(persona17)
-                            .addComponent(persona22))
-                        .addGap(63, 63, 63)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(66, 66, 66)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(persona7)
+                                    .addComponent(persona2)
+                                    .addComponent(persona12)
+                                    .addComponent(persona17))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                                .addComponent(persona22)
+                                .addGap(78, 78, 78)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(persona3)
                             .addComponent(persona8)
@@ -326,14 +338,18 @@ public class Game extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(persona1)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(persona5)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(persona4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(persona3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(persona2))
-                .addGap(24, 24, 24)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(persona1)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(persona5)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(persona4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(persona3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(25, 25, 25))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(persona2)
+                        .addGap(18, 18, 18)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(persona8)
                     .addComponent(persona9)
@@ -379,7 +395,7 @@ public class Game extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(366, 366, 366))
+                .addGap(365, 365, 365))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -395,12 +411,19 @@ public class Game extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        if (!personaSeleccionada.isEmpty()) {
+            System.out.println("Seleccionaste a: " + personaSeleccionada);
+                        // Desde tu otra clase (por ejemplo, en el método main)
+            String nom = personaSeleccionada;  // Reemplaza esto con el valor que deseas pasar
+            Chat chat = new Chat(personaSeleccionada);  // Crea una instancia de Chat pasando nom como argumento
+            chat.setVisible(true);  // Muestra el formulario Chat
 
-    private void persona1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona1MouseClicked
-        System.out.println("Persionaste la persona 1");
-    }//GEN-LAST:event_persona1MouseClicked
+            
+        dispose();
+        } else {
+            System.out.println("No has seleccionado ninguna persona.");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void persona2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_persona2KeyPressed
         // TODO add your handling code here:
@@ -408,103 +431,153 @@ public class Game extends javax.swing.JFrame {
 
     private void persona2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona2MouseClicked
         System.out.println("Persionaste la persona 2");
+        personaSeleccionada = "Persona Zuhra";
     }//GEN-LAST:event_persona2MouseClicked
 
     private void persona3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona3MouseClicked
         System.out.println("Persionaste la persona 3");
+        personaSeleccionada = "Persona Robert";
     }//GEN-LAST:event_persona3MouseClicked
 
     private void persona4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona4MouseClicked
         System.out.println("Persionaste la persona 4");
+        personaSeleccionada = "Persona Caroline";
+
     }//GEN-LAST:event_persona4MouseClicked
 
     private void persona5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona5MouseClicked
         System.out.println("Persionaste la persona 5");
+        personaSeleccionada = "Persona Rolando";
+       
+        
+
     }//GEN-LAST:event_persona5MouseClicked
 
     private void persona6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona6MouseClicked
         System.out.println("Persionaste la persona 6");
+         personaSeleccionada = "Persona Anastasia";
+        
     }//GEN-LAST:event_persona6MouseClicked
 
     private void persona7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona7MouseClicked
         System.out.println("Persionaste la persona 7");
+        personaSeleccionada = "Persona Ankit";        
+
     }//GEN-LAST:event_persona7MouseClicked
 
     private void persona8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona8MouseClicked
         System.out.println("Persionaste la persona 8");
+                personaSeleccionada = "Persona Vinita";
+
+
     }//GEN-LAST:event_persona8MouseClicked
 
     private void persona9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona9MouseClicked
         System.out.println("Persionaste la persona 9");
+                personaSeleccionada = "Persona Joshua";
+
     }//GEN-LAST:event_persona9MouseClicked
 
     private void persona10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona10MouseClicked
         System.out.println("Persionaste la persona 10");
+                personaSeleccionada = "Persona Alimatou";
+
     }//GEN-LAST:event_persona10MouseClicked
 
     private void persona11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona11MouseClicked
         System.out.println("Persionaste la persona 11");
+                personaSeleccionada = "Persona Carlos";
+
     }//GEN-LAST:event_persona11MouseClicked
 
     private void persona12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona12MouseClicked
         System.out.println("Persionaste la persona 12");
+                personaSeleccionada = "Persona Carmen";
+
     }//GEN-LAST:event_persona12MouseClicked
 
     private void persona13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona13MouseClicked
         System.out.println("Persionaste la persona 13");
+                personaSeleccionada = "Persona Peter";
+
     }//GEN-LAST:event_persona13MouseClicked
 
     private void persona14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona14MouseClicked
         System.out.println("Persionaste la persona 14");
+                personaSeleccionada = "Persona Elsa";
+
     }//GEN-LAST:event_persona14MouseClicked
 
     private void persona15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona15MouseClicked
         System.out.println("Persionaste la persona 15");
+                personaSeleccionada = "Persona John";
+
     }//GEN-LAST:event_persona15MouseClicked
 
     private void persona16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona16MouseClicked
         System.out.println("Persionaste la persona 16");
+        personaSeleccionada = "Persona Hermela";
+
     }//GEN-LAST:event_persona16MouseClicked
 
     private void persona17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona17MouseClicked
         System.out.println("Persionaste la persona 17");
+                personaSeleccionada = "Persona Arnoud";
+
     }//GEN-LAST:event_persona17MouseClicked
 
     private void persona18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona18MouseClicked
         System.out.println("Persionaste la persona 18");
+                personaSeleccionada = "Persona Li";
+
     }//GEN-LAST:event_persona18MouseClicked
 
     private void persona19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona19MouseClicked
         System.out.println("Persionaste la persona 19");
+                personaSeleccionada = "Persona Yonas";
+
     }//GEN-LAST:event_persona19MouseClicked
 
     private void persona20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona20MouseClicked
         System.out.println("Persionaste la persona 20");
+                personaSeleccionada = "Persona Rosa";
+
     }//GEN-LAST:event_persona20MouseClicked
 
     private void persona21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona21MouseClicked
         System.out.println("Persionaste la persona 21");
+                personaSeleccionada = "Persona Ed";
+
     }//GEN-LAST:event_persona21MouseClicked
 
     private void persona22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona22MouseClicked
         System.out.println("Persionaste la persona 22");
+                personaSeleccionada = "Persona Nathaline";
+
     }//GEN-LAST:event_persona22MouseClicked
 
     private void persona23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona23MouseClicked
-        System.out.println("Persionaste la persona 23");
-    }//GEN-LAST:event_persona23MouseClicked
+        System.out.println("Persionaste la persona 23");   
+        personaSeleccionada = "Persona Hector";
 
-    private void persona24MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona24MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_persona24MouseEntered
+    }//GEN-LAST:event_persona23MouseClicked
 
     private void persona24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona24MouseClicked
         System.out.println("Persionaste la persona 24");
+                personaSeleccionada = "Persona Elizabeth";
+
     }//GEN-LAST:event_persona24MouseClicked
 
     private void persona25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona25MouseClicked
         System.out.println("Persionaste la persona 25");
+                personaSeleccionada = "Persona Mustafa";
+
     }//GEN-LAST:event_persona25MouseClicked
+
+    private void persona1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona1MouseClicked
+        System.out.println("Persionaste la persona 1");
+                personaSeleccionada = "Persona Moussa";
+    }//GEN-LAST:event_persona1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -533,6 +606,10 @@ public class Game extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+        
+        System.out.println("");
+        
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -572,4 +649,10 @@ public class Game extends javax.swing.JFrame {
     private javax.swing.JLabel persona8;
     private javax.swing.JLabel persona9;
     // End of variables declaration//GEN-END:variables
+
+    String personaSeleccionada() {
+        return personaSeleccionada;
+    }
+
+    
 }
