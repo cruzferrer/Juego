@@ -5,13 +5,15 @@
 package GUI;
 
 import Cliente.Cliente1;
-import Servidor1.Servidor1;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.*;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
-import javax.swing.JLabel;
 import javax.swing.text.DefaultCaret;
 
 /**
@@ -37,7 +39,12 @@ public class Chat extends javax.swing.JFrame {
         
         initComponents();
         per.setText(nom);
-     
+        
+        
+        Paquete pack = new Paquete();
+        pack.setN(nom);
+        
+        
         FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT); 
 
         panChat.setLayout(flowLayout);
@@ -61,6 +68,68 @@ public class Chat extends javax.swing.JFrame {
 
     }
     
+    
+    public class Paquete implements Serializable {
+        private String n , ip, mensaje;
+
+        public String getN() {
+            return n;
+        }
+
+        public void setN(String n) {
+            this.n = n;
+        }
+
+        public String getIp() {
+            return ip;
+        }
+
+        public void setIp(String ip) {
+            this.ip = ip;
+        }
+
+        public String getMensaje() {
+            return mensaje;
+        }
+
+        public void setMensaje(String mensaje) {
+            this.mensaje = mensaje;
+        }
+        
+        
+        
+        
+        
+    }
+   
+    
+    
+
+public class MensajeDTO implements Serializable {
+    private String nombre;
+    private String ip;
+    private String mensaje;
+
+    public MensajeDTO(String nombre, String ip, String mensaje) {
+        this.nombre = nombre;
+        this.ip = ip;
+        this.mensaje = mensaje;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public String getMensaje() {
+        return mensaje;
+    }
+}
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -78,6 +147,8 @@ public class Chat extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         per = new javax.swing.JTextPane();
         X = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        iP = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -119,6 +190,8 @@ public class Chat extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane2.setViewportView(iP);
+
         javax.swing.GroupLayout panLayout = new javax.swing.GroupLayout(pan);
         pan.setLayout(panLayout);
         panLayout.setHorizontalGroup(
@@ -134,6 +207,8 @@ public class Chat extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(X, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
@@ -153,7 +228,8 @@ public class Chat extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(panLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
+                            .addComponent(jLabel1)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(19, 19, 19)))
                 .addComponent(panChat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -186,6 +262,28 @@ public class Chat extends javax.swing.JFrame {
      
     private void chatboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chatboxActionPerformed
         String mensaje = chatbox.getText();
+        String IP = iP.getText();
+        String N = per.getText();
+
+        try {
+            Socket sock = new Socket("127.0.0.1", 8080);
+
+            MensajeDTO mensajeDTO = new MensajeDTO(N, IP, mensaje);
+
+            ObjectOutputStream outStream = new ObjectOutputStream(sock.getOutputStream());
+            outStream.writeObject(mensajeDTO);
+            outStream.close();
+            sock.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Chat.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (!mensaje.isEmpty()) {
+            chatTextArea.append("usuario: " + mensaje + "\n"); // Agregar el mensaje al JTextArea "per"
+            chatbox.setText("");
+        }
+
+        
         if (!mensaje.isEmpty()) {
             chatTextArea.append("usuario: "+mensaje + "\n"); // Agregar el mensaje al JTextArea "per"
             
@@ -193,10 +291,17 @@ public class Chat extends javax.swing.JFrame {
             
         }
         
+        
        
 
     }//GEN-LAST:event_chatboxActionPerformed
 
+    
+    public void actualizarTextArea(String n, String ip, String m) {
+        // Actualiza el contenido del JTextArea con los datos recibidos
+        chatTextArea.append("\n" + n + ": " + m  + "para "+ ip+ "\n");
+    }
+    
     private void XActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XActionPerformed
         
         JFrame Game = new Game();
@@ -209,8 +314,6 @@ public class Chat extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-    
-    
 
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -261,9 +364,11 @@ public class Chat extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton X;
     private javax.swing.JTextField chatbox;
+    private javax.swing.JTextPane iP;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel pan;
     private javax.swing.JPanel panChat;
     private javax.swing.JTextPane per;
