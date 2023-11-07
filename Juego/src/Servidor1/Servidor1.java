@@ -3,72 +3,100 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Servidor1;
-    import java.io.ObjectInputStream;
-import GUI.Chat;
-import GUI.Chat.MensajeDTO;
-import GUI.Chat.Paquete;
-import java.io.DataInputStream;
-import java.io.IOException;
+
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.io.ObjectInputStream;
-/**
- *
- * @author elliotfrias
- */
-
 
 public class Servidor1 {
-    private ServerSocket serverSocket;
-    private List<Socket> clientes = new ArrayList<>();
-    private Chat chat;
 
-    public Servidor1(Chat chat) {
-        this.chat = chat;
-    }
+    private static final int PORT = 8080;
+    private static List<Socket> clientes = new ArrayList<>();
 
-public void run() {
-    try {
-        ServerSocket serv = new ServerSocket(8080);
+    public void iniciar() {
+        try (ServerSocket serverSocket = new ServerSocket(PORT)) {
+            System.out.println("Servidor WebSocket de Adivina Quién escuchando en el puerto " + PORT);
 
-        System.out.println("El servidor está corriendo...");
+            while (true) {
+                Socket clientSocket = serverSocket.accept();
+                System.out.println("Nuevo jugador conectado desde " + clientSocket.getInetAddress());
+                clientes.add(clientSocket);
 
-        while (true) {
-            Socket sock = serv.accept();
-
-            ObjectInputStream ois = new ObjectInputStream(sock.getInputStream());
-            MensajeDTO mensajeDTO = (MensajeDTO) ois.readObject();
-            
-            String n = mensajeDTO.getNombre();
-            String ip = mensajeDTO.getIp();
-            String m = mensajeDTO.getMensaje();
-
-            // Usa el objeto chat para acceder al método actualizarTextArea
-            chat.actualizarTextArea(n, ip, m);
-
-            sock.close();
+                // Manejar la conexión en un hilo separado
+                new AdivinaQuienWebSocketHandler(clientSocket, clientes).start();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    } catch (IOException | ClassNotFoundException ex) {
-        ex.printStackTrace();
     }
 }
 
+class AdivinaQuienWebSocketHandler extends Thread {
 
+    private Socket socket;
+    private List<Socket> clientes;
+    private PrintWriter out;
+    private BufferedReader in;
 
-     public static void main(String[] args) {
-        // Crea una instancia de OtraClase
-        Chat otraClase = new Chat("a");
+    public AdivinaQuienWebSocketHandler(Socket socket, List<Socket> clientes) {
+        this.socket = socket;
+        this.clientes = clientes;
+    }
 
-        // Crea una instancia de Servidor1 y pasa la referencia a OtraClase
-        Servidor1 servidor = new Servidor1(otraClase);
+    @Override
+    public void run() {
+        try {
+            out = new PrintWriter(socket.getOutputStream(), true);
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-        // Inicia el servidor
-        servidor.run();
+            out.println("¡Bienvenido al juego de Adivina Quién!");
+
+            String pregunta;
+            while ((pregunta = in.readLine()) != null) {
+                System.out.println("Pregunta recibida: " + pregunta);
+
+                // Lógica del juego: Procesar la pregunta y enviar una respuesta
+                String respuesta = procesarPregunta(pregunta);
+
+                // Enviar la respuesta al jugador que hizo la pregunta
+                out.println("Respuesta: " + respuesta);
+
+                // Envía la respuesta a todos los jugadores
+                broadcast("Turno " + Thread.currentThread().getId() + ": " + respuesta);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                in.close();
+                out.close();
+                socket.close();
+                clientes.remove(socket); // Eliminar el cliente desconectado de la lista
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private String procesarPregunta(String pregunta) {
+        // Implementa la lógica de procesar la pregunta aquí
+        // Por ejemplo, verifica si la pregunta revela la identidad del personaje
+
+        // En este ejemplo, simplemente se devuelve una respuesta fija
+        return "No tienes suficiente información para adivinar aún. Sigue preguntando.";
+    }
+
+    // Método para enviar un mensaje a todos los jugadores
+    private void broadcast(String mensaje) {
+        for (Socket cliente : clientes) {
+            try {
+                PrintWriter clienteOut = new PrintWriter(cliente.getOutputStream(), true);
+                clienteOut.println(mensaje);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
-
-
