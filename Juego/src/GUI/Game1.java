@@ -9,7 +9,6 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-
 /**
  *
  * @author elliotfrias
@@ -19,17 +18,38 @@ public class Game1 extends javax.swing.JFrame {
     /**
      * Creates new form Game
      */
-     String personaSeleccionada = "";
-     
-    
-    public Game1() { 
+    String personaSeleccionada = "";
+    private boolean ventanaVisible = true;
+    private boolean ventanaVisible1 = true;
+    private boolean ventanaVisible3 = true;
+    private boolean ventanaVisible4 = true;
+    private boolean ventanaVisible5 = true;
+    private boolean ventanaVisible6 = true;
+    private boolean ventanaVisible7 = true;
+    private boolean ventanaVisible8 = true;
+    private boolean ventanaVisible9 = true;
+    private boolean ventanaVisible10 = true;
+    private boolean ventanaVisible11 = true;
+    private boolean ventanaVisible12 = true;
+    private boolean ventanaVisible13 = true;
+    private boolean ventanaVisible14 = true;
+    private boolean ventanaVisible15 = true;
+    private boolean ventanaVisible16 = true;
+    private boolean ventanaVisible17 = true;
+    private boolean ventanaVisible18 = true;
+    private boolean ventanaVisible19 = true;
+    private boolean ventanaVisible20 = true;
+    private boolean ventanaVisible21 = true;
+    private boolean ventanaVisible22 = true;
+    private boolean ventanaVisible23 = true;
+    private boolean ventanaVisible24 = true;
+    private boolean ventanaVisible25 = true;
+
+
+    public Game1() {
         initComponents();
     }
-    
-    
-    
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -397,9 +417,16 @@ public class Game1 extends javax.swing.JFrame {
         System.out.println("Persionaste la persona 2");
         personaSeleccionada = "Persona Zuhra";
         Image nuevoIcono;
+
         try {
-            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            if (ventanaVisible) {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/persona2.jpg"));
+            } else {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            }
+
             persona2.setIcon(new ImageIcon(nuevoIcono));
+            ventanaVisible = !ventanaVisible;
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -409,9 +436,16 @@ public class Game1 extends javax.swing.JFrame {
         System.out.println("Persionaste la persona 3");
         personaSeleccionada = "Persona Robert";
         Image nuevoIcono;
+
         try {
-            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            if (ventanaVisible3) {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/persona3.jpg"));
+            } else {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            }
+
             persona3.setIcon(new ImageIcon(nuevoIcono));
+            ventanaVisible3 = !ventanaVisible3;
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -422,12 +456,17 @@ public class Game1 extends javax.swing.JFrame {
         personaSeleccionada = "Persona Caroline";
         Image nuevoIcono;
         try {
-            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            if (ventanaVisible4) {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/persona4.jpg"));
+            } else {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            }
+
             persona4.setIcon(new ImageIcon(nuevoIcono));
+            ventanaVisible4 = !ventanaVisible4;
         } catch (Exception e) {
             System.out.println(e);
         }
-
     }//GEN-LAST:event_persona4MouseClicked
 
     private void persona5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona5MouseClicked
@@ -435,36 +474,51 @@ public class Game1 extends javax.swing.JFrame {
         personaSeleccionada = "Persona Rolando";
         Image nuevoIcono;
         try {
-            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            if (ventanaVisible5) {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/persona5.jpg"));
+            } else {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            }
+
             persona5.setIcon(new ImageIcon(nuevoIcono));
+            ventanaVisible5 = !ventanaVisible5;
         } catch (Exception e) {
             System.out.println(e);
         }
-       
-        
-
     }//GEN-LAST:event_persona5MouseClicked
 
     private void persona6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona6MouseClicked
         System.out.println("Persionaste la persona 6");
-         personaSeleccionada = "Persona Anastasia";
-         Image nuevoIcono;
+        personaSeleccionada = "Persona Anastasia";
+        Image nuevoIcono;
         try {
-            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            if (ventanaVisible6) {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/persona6.jpg"));
+            } else {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            }
+
             persona6.setIcon(new ImageIcon(nuevoIcono));
+            ventanaVisible6 = !ventanaVisible6;
         } catch (Exception e) {
             System.out.println(e);
         }
-        
+
     }//GEN-LAST:event_persona6MouseClicked
 
     private void persona7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona7MouseClicked
         System.out.println("Persionaste la persona 7");
-        personaSeleccionada = "Persona Ankit";    
+        personaSeleccionada = "Persona Ankit";
         Image nuevoIcono;
         try {
-            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            if (ventanaVisible7) {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/persona7.jpg"));
+            } else {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            }
+
             persona7.setIcon(new ImageIcon(nuevoIcono));
+            ventanaVisible7 = !ventanaVisible7;
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -473,25 +527,35 @@ public class Game1 extends javax.swing.JFrame {
 
     private void persona8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona8MouseClicked
         System.out.println("Persionaste la persona 8");
-                personaSeleccionada = "Persona Vinita";
-                Image nuevoIcono;
+        personaSeleccionada = "Persona Vinita";
+        Image nuevoIcono;
         try {
-            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            if (ventanaVisible8) {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/persona8.jpg"));
+            } else {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            }
+
             persona8.setIcon(new ImageIcon(nuevoIcono));
+            ventanaVisible8 = !ventanaVisible8;
         } catch (Exception e) {
             System.out.println(e);
         }
-
-
     }//GEN-LAST:event_persona8MouseClicked
 
     private void persona9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona9MouseClicked
         System.out.println("Persionaste la persona 9");
-                personaSeleccionada = "Persona Joshua";
-                Image nuevoIcono;
+        personaSeleccionada = "Persona Joshua";
+        Image nuevoIcono;
         try {
-            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            if (ventanaVisible9) {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/persona9.jpg"));
+            } else {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            }
+
             persona9.setIcon(new ImageIcon(nuevoIcono));
+            ventanaVisible9 = !ventanaVisible9;
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -500,11 +564,17 @@ public class Game1 extends javax.swing.JFrame {
 
     private void persona10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona10MouseClicked
         System.out.println("Persionaste la persona 10");
-                personaSeleccionada = "Persona Alimatou";
-                Image nuevoIcono;
+        personaSeleccionada = "Persona Alimatou";
+        Image nuevoIcono;
         try {
-            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            if (ventanaVisible10) {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/persona10.jpg"));
+            } else {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            }
+
             persona10.setIcon(new ImageIcon(nuevoIcono));
+            ventanaVisible10 = !ventanaVisible10;
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -513,11 +583,17 @@ public class Game1 extends javax.swing.JFrame {
 
     private void persona11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona11MouseClicked
         System.out.println("Persionaste la persona 11");
-                personaSeleccionada = "Persona Carlos";
-                Image nuevoIcono;
+        personaSeleccionada = "Persona Carlos";
+        Image nuevoIcono;
         try {
-            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            if (ventanaVisible11) {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/persona11.jpg"));
+            } else {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            }
+
             persona11.setIcon(new ImageIcon(nuevoIcono));
+            ventanaVisible11 = !ventanaVisible11;
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -526,11 +602,17 @@ public class Game1 extends javax.swing.JFrame {
 
     private void persona12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona12MouseClicked
         System.out.println("Persionaste la persona 12");
-                personaSeleccionada = "Persona Carmen";
-                Image nuevoIcono;
+        personaSeleccionada = "Persona Carmen";
+        Image nuevoIcono;
         try {
-            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            if (ventanaVisible12) {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/persona12.jpg"));
+            } else {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            }
+
             persona12.setIcon(new ImageIcon(nuevoIcono));
+            ventanaVisible12 = !ventanaVisible12;
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -539,11 +621,17 @@ public class Game1 extends javax.swing.JFrame {
 
     private void persona13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona13MouseClicked
         System.out.println("Persionaste la persona 13");
-                personaSeleccionada = "Persona Peter";
-                Image nuevoIcono;
+        personaSeleccionada = "Persona Peter";
+        Image nuevoIcono;
         try {
-            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            if (ventanaVisible13) {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/persona13.jpg"));
+            } else {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            }
+
             persona13.setIcon(new ImageIcon(nuevoIcono));
+            ventanaVisible13 = !ventanaVisible13;
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -552,11 +640,17 @@ public class Game1 extends javax.swing.JFrame {
 
     private void persona14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona14MouseClicked
         System.out.println("Persionaste la persona 14");
-                personaSeleccionada = "Persona Elsa";
-                Image nuevoIcono;
+        personaSeleccionada = "Persona Elsa";
+        Image nuevoIcono;
         try {
-            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            if (ventanaVisible14) {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/persona14.jpg"));
+            } else {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            }
+
             persona14.setIcon(new ImageIcon(nuevoIcono));
+            ventanaVisible14 = !ventanaVisible14;
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -565,11 +659,17 @@ public class Game1 extends javax.swing.JFrame {
 
     private void persona15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona15MouseClicked
         System.out.println("Persionaste la persona 15");
-                personaSeleccionada = "Persona John";
-                Image nuevoIcono;
+        personaSeleccionada = "Persona John";
+        Image nuevoIcono;
         try {
-            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            if (ventanaVisible15) {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/persona15.jpg"));
+            } else {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            }
+
             persona15.setIcon(new ImageIcon(nuevoIcono));
+            ventanaVisible15 = !ventanaVisible15;
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -581,8 +681,14 @@ public class Game1 extends javax.swing.JFrame {
         personaSeleccionada = "Persona Hermela";
         Image nuevoIcono;
         try {
-            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            if (ventanaVisible16) {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/persona16.jpg"));
+            } else {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            }
+
             persona16.setIcon(new ImageIcon(nuevoIcono));
+            ventanaVisible16 = !ventanaVisible16;
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -591,11 +697,17 @@ public class Game1 extends javax.swing.JFrame {
 
     private void persona17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona17MouseClicked
         System.out.println("Persionaste la persona 17");
-                personaSeleccionada = "Persona Arnoud";
-                Image nuevoIcono;
+        personaSeleccionada = "Persona Arnoud";
+        Image nuevoIcono;
         try {
-            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            if (ventanaVisible17) {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/persona17.jpg"));
+            } else {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            }
+
             persona17.setIcon(new ImageIcon(nuevoIcono));
+            ventanaVisible17 = !ventanaVisible17;
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -604,11 +716,17 @@ public class Game1 extends javax.swing.JFrame {
 
     private void persona18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona18MouseClicked
         System.out.println("Persionaste la persona 18");
-                personaSeleccionada = "Persona Li";
-                Image nuevoIcono;
-        try {
-            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+        personaSeleccionada = "Persona Li";
+        Image nuevoIcono;
+       try {
+            if (ventanaVisible18) {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/persona18.jpg"));
+            } else {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            }
+
             persona18.setIcon(new ImageIcon(nuevoIcono));
+            ventanaVisible18 = !ventanaVisible18;
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -617,11 +735,17 @@ public class Game1 extends javax.swing.JFrame {
 
     private void persona19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona19MouseClicked
         System.out.println("Persionaste la persona 19");
-                personaSeleccionada = "Persona Yonas";
-                Image nuevoIcono;
+        personaSeleccionada = "Persona Yonas";
+        Image nuevoIcono;
         try {
-            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            if (ventanaVisible19) {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/persona19.jpg"));
+            } else {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            }
+
             persona19.setIcon(new ImageIcon(nuevoIcono));
+            ventanaVisible19 = !ventanaVisible19;
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -630,11 +754,17 @@ public class Game1 extends javax.swing.JFrame {
 
     private void persona20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona20MouseClicked
         System.out.println("Persionaste la persona 20");
-                personaSeleccionada = "Persona Rosa";
-                Image nuevoIcono;
+        personaSeleccionada = "Persona Rosa";
+        Image nuevoIcono;
         try {
-            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            if (ventanaVisible20) {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/persona20.jpg"));
+            } else {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            }
+
             persona20.setIcon(new ImageIcon(nuevoIcono));
+            ventanaVisible20 = !ventanaVisible20;
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -643,11 +773,17 @@ public class Game1 extends javax.swing.JFrame {
 
     private void persona21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona21MouseClicked
         System.out.println("Persionaste la persona 21");
-                personaSeleccionada = "Persona Ed";
-                Image nuevoIcono;
+        personaSeleccionada = "Persona Ed";
+        Image nuevoIcono;
         try {
-            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            if (ventanaVisible21) {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/persona21.jpg"));
+            } else {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            }
+
             persona21.setIcon(new ImageIcon(nuevoIcono));
+            ventanaVisible21 = !ventanaVisible21;
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -656,11 +792,17 @@ public class Game1 extends javax.swing.JFrame {
 
     private void persona22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona22MouseClicked
         System.out.println("Persionaste la persona 22");
-                personaSeleccionada = "Persona Nathaline";
-                Image nuevoIcono;
+        personaSeleccionada = "Persona Nathaline";
+        Image nuevoIcono;
         try {
-            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            if (ventanaVisible22) {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/persona22.jpg"));
+            } else {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            }
+
             persona22.setIcon(new ImageIcon(nuevoIcono));
+            ventanaVisible22 = !ventanaVisible22;
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -668,12 +810,18 @@ public class Game1 extends javax.swing.JFrame {
     }//GEN-LAST:event_persona22MouseClicked
 
     private void persona23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona23MouseClicked
-        System.out.println("Persionaste la persona 23");   
+        System.out.println("Persionaste la persona 23");
         personaSeleccionada = "Persona Hector";
         Image nuevoIcono;
         try {
-            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            if (ventanaVisible23) {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/persona23.jpg"));
+            } else {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            }
+
             persona23.setIcon(new ImageIcon(nuevoIcono));
+            ventanaVisible23 = !ventanaVisible23;
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -682,11 +830,17 @@ public class Game1 extends javax.swing.JFrame {
 
     private void persona24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona24MouseClicked
         System.out.println("Persionaste la persona 24");
-                personaSeleccionada = "Persona Elizabeth";
-                Image nuevoIcono;
+        personaSeleccionada = "Persona Elizabeth";
+        Image nuevoIcono;
         try {
-            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            if (ventanaVisible24) {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/persona24.jpg"));
+            } else {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            }
+
             persona24.setIcon(new ImageIcon(nuevoIcono));
+            ventanaVisible24 = !ventanaVisible24;
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -695,11 +849,17 @@ public class Game1 extends javax.swing.JFrame {
 
     private void persona25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona25MouseClicked
         System.out.println("Persionaste la persona 25");
-                personaSeleccionada = "Persona Mustafa";
-                Image nuevoIcono;
+        personaSeleccionada = "Persona Mustafa";
+        Image nuevoIcono;
         try {
-            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            if (ventanaVisible25) {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/persona25.jpg"));
+            } else {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            }
+
             persona25.setIcon(new ImageIcon(nuevoIcono));
+            ventanaVisible25 = !ventanaVisible25;
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -708,11 +868,17 @@ public class Game1 extends javax.swing.JFrame {
 
     private void persona1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona1MouseClicked
         System.out.println("Persionaste la persona 1");
-                personaSeleccionada = "Persona Moussa";
-                Image nuevoIcono;
+        personaSeleccionada = "Persona Moussa";
+        Image nuevoIcono;
         try {
-            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            if (ventanaVisible1) {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/persona1.jpg"));
+            } else {
+                nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            }
+
             persona1.setIcon(new ImageIcon(nuevoIcono));
+            ventanaVisible1 = !ventanaVisible1;
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -746,10 +912,8 @@ public class Game1 extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
 
-        
         System.out.println("");
-        
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -792,5 +956,4 @@ public class Game1 extends javax.swing.JFrame {
         return personaSeleccionada;
     }
 
-    
 }
