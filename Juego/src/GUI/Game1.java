@@ -4,7 +4,9 @@
  */
 package GUI;
 
+import java.awt.Image;
 import java.net.URL;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 
@@ -12,7 +14,7 @@ import javax.swing.ImageIcon;
  *
  * @author elliotfrias
  */
-public class Game extends javax.swing.JFrame {
+public class Game1 extends javax.swing.JFrame {
 
     /**
      * Creates new form Game
@@ -20,7 +22,7 @@ public class Game extends javax.swing.JFrame {
      String personaSeleccionada = "";
      
     
-    public Game() { 
+    public Game1() { 
         initComponents();
     }
     
@@ -64,8 +66,6 @@ public class Game extends javax.swing.JFrame {
         persona23 = new javax.swing.JLabel();
         persona24 = new javax.swing.JLabel();
         persona25 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 153, 153));
@@ -257,17 +257,6 @@ public class Game extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(255, 102, 153));
-        jButton1.setText("CHAT");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
-        jLabel2.setText("ESCOGE UN PERSONAJE...");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -275,62 +264,56 @@ public class Game extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(persona1)
+                    .addComponent(persona6)
+                    .addComponent(persona11)
+                    .addComponent(persona16)
+                    .addComponent(persona21))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(persona1)
-                            .addComponent(persona6)
-                            .addComponent(persona11)
-                            .addComponent(persona16)
-                            .addComponent(persona21))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(66, 66, 66)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(persona7)
-                                    .addComponent(persona2)
-                                    .addComponent(persona12)
-                                    .addComponent(persona17))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                                .addComponent(persona22)
-                                .addGap(78, 78, 78)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(persona3)
-                            .addComponent(persona8)
-                            .addComponent(persona13)
-                            .addComponent(persona18)
-                            .addComponent(persona23))
-                        .addGap(67, 67, 67)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(persona4)
-                            .addComponent(persona9)
-                            .addComponent(persona14)
-                            .addComponent(persona19)
-                            .addComponent(persona24))
+                            .addComponent(persona7)
+                            .addComponent(persona2)
+                            .addComponent(persona12)
+                            .addComponent(persona17))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                        .addComponent(persona22)
+                        .addGap(78, 78, 78)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(persona3)
+                    .addComponent(persona8)
+                    .addComponent(persona13)
+                    .addComponent(persona18)
+                    .addComponent(persona23))
+                .addGap(67, 67, 67)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(persona4)
+                    .addComponent(persona9)
+                    .addComponent(persona14)
+                    .addComponent(persona19)
+                    .addComponent(persona24))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addGap(56, 56, 56)
-                                            .addComponent(persona5))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(persona10)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(persona15)))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(56, 56, 56)
+                                    .addComponent(persona5))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(persona20)))
+                                    .addComponent(persona10)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(persona25))))
+                                .addComponent(persona15)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(persona20)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(persona25)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -377,11 +360,7 @@ public class Game extends javax.swing.JFrame {
                     .addComponent(persona23, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(persona24)
                     .addComponent(persona25))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -410,23 +389,6 @@ public class Game extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (!personaSeleccionada.isEmpty()) {
-            System.out.println("Seleccionaste a: " + personaSeleccionada);
-                        // Desde tu otra clase (por ejemplo, en el método main)
-            String nom = personaSeleccionada;
-            Game1 game = new Game1();// Reemplaza esto con el valor que deseas pasar
-            game.setVisible(true);
-            Chat chat = new Chat(personaSeleccionada);  // Crea una instancia de Chat pasando nom como argumento
-            chat.setVisible(true);  // Muestra el formulario Chat
-
-            
-        dispose();
-        } else {
-            System.out.println("No has seleccionado ninguna persona.");
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void persona2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_persona2KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_persona2KeyPressed
@@ -434,22 +396,50 @@ public class Game extends javax.swing.JFrame {
     private void persona2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona2MouseClicked
         System.out.println("Persionaste la persona 2");
         personaSeleccionada = "Persona Zuhra";
+        Image nuevoIcono;
+        try {
+            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            persona2.setIcon(new ImageIcon(nuevoIcono));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }//GEN-LAST:event_persona2MouseClicked
 
     private void persona3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona3MouseClicked
         System.out.println("Persionaste la persona 3");
         personaSeleccionada = "Persona Robert";
+        Image nuevoIcono;
+        try {
+            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            persona3.setIcon(new ImageIcon(nuevoIcono));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }//GEN-LAST:event_persona3MouseClicked
 
     private void persona4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona4MouseClicked
         System.out.println("Persionaste la persona 4");
         personaSeleccionada = "Persona Caroline";
+        Image nuevoIcono;
+        try {
+            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            persona4.setIcon(new ImageIcon(nuevoIcono));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
     }//GEN-LAST:event_persona4MouseClicked
 
     private void persona5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona5MouseClicked
         System.out.println("Persionaste la persona 5");
         personaSeleccionada = "Persona Rolando";
+        Image nuevoIcono;
+        try {
+            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            persona5.setIcon(new ImageIcon(nuevoIcono));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
        
         
 
@@ -458,18 +448,39 @@ public class Game extends javax.swing.JFrame {
     private void persona6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona6MouseClicked
         System.out.println("Persionaste la persona 6");
          personaSeleccionada = "Persona Anastasia";
+         Image nuevoIcono;
+        try {
+            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            persona6.setIcon(new ImageIcon(nuevoIcono));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         
     }//GEN-LAST:event_persona6MouseClicked
 
     private void persona7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona7MouseClicked
         System.out.println("Persionaste la persona 7");
-        personaSeleccionada = "Persona Ankit";        
+        personaSeleccionada = "Persona Ankit";    
+        Image nuevoIcono;
+        try {
+            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            persona7.setIcon(new ImageIcon(nuevoIcono));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
     }//GEN-LAST:event_persona7MouseClicked
 
     private void persona8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona8MouseClicked
         System.out.println("Persionaste la persona 8");
                 personaSeleccionada = "Persona Vinita";
+                Image nuevoIcono;
+        try {
+            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            persona8.setIcon(new ImageIcon(nuevoIcono));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
 
     }//GEN-LAST:event_persona8MouseClicked
@@ -477,108 +488,234 @@ public class Game extends javax.swing.JFrame {
     private void persona9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona9MouseClicked
         System.out.println("Persionaste la persona 9");
                 personaSeleccionada = "Persona Joshua";
+                Image nuevoIcono;
+        try {
+            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            persona9.setIcon(new ImageIcon(nuevoIcono));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
     }//GEN-LAST:event_persona9MouseClicked
 
     private void persona10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona10MouseClicked
         System.out.println("Persionaste la persona 10");
                 personaSeleccionada = "Persona Alimatou";
+                Image nuevoIcono;
+        try {
+            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            persona10.setIcon(new ImageIcon(nuevoIcono));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
     }//GEN-LAST:event_persona10MouseClicked
 
     private void persona11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona11MouseClicked
         System.out.println("Persionaste la persona 11");
                 personaSeleccionada = "Persona Carlos";
+                Image nuevoIcono;
+        try {
+            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            persona11.setIcon(new ImageIcon(nuevoIcono));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
     }//GEN-LAST:event_persona11MouseClicked
 
     private void persona12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona12MouseClicked
         System.out.println("Persionaste la persona 12");
                 personaSeleccionada = "Persona Carmen";
+                Image nuevoIcono;
+        try {
+            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            persona12.setIcon(new ImageIcon(nuevoIcono));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
     }//GEN-LAST:event_persona12MouseClicked
 
     private void persona13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona13MouseClicked
         System.out.println("Persionaste la persona 13");
                 personaSeleccionada = "Persona Peter";
+                Image nuevoIcono;
+        try {
+            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            persona13.setIcon(new ImageIcon(nuevoIcono));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
     }//GEN-LAST:event_persona13MouseClicked
 
     private void persona14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona14MouseClicked
         System.out.println("Persionaste la persona 14");
                 personaSeleccionada = "Persona Elsa";
+                Image nuevoIcono;
+        try {
+            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            persona14.setIcon(new ImageIcon(nuevoIcono));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
     }//GEN-LAST:event_persona14MouseClicked
 
     private void persona15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona15MouseClicked
         System.out.println("Persionaste la persona 15");
                 personaSeleccionada = "Persona John";
+                Image nuevoIcono;
+        try {
+            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            persona15.setIcon(new ImageIcon(nuevoIcono));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
     }//GEN-LAST:event_persona15MouseClicked
 
     private void persona16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona16MouseClicked
         System.out.println("Persionaste la persona 16");
         personaSeleccionada = "Persona Hermela";
+        Image nuevoIcono;
+        try {
+            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            persona16.setIcon(new ImageIcon(nuevoIcono));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
     }//GEN-LAST:event_persona16MouseClicked
 
     private void persona17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona17MouseClicked
         System.out.println("Persionaste la persona 17");
                 personaSeleccionada = "Persona Arnoud";
+                Image nuevoIcono;
+        try {
+            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            persona17.setIcon(new ImageIcon(nuevoIcono));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
     }//GEN-LAST:event_persona17MouseClicked
 
     private void persona18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona18MouseClicked
         System.out.println("Persionaste la persona 18");
                 personaSeleccionada = "Persona Li";
+                Image nuevoIcono;
+        try {
+            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            persona18.setIcon(new ImageIcon(nuevoIcono));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
     }//GEN-LAST:event_persona18MouseClicked
 
     private void persona19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona19MouseClicked
         System.out.println("Persionaste la persona 19");
                 personaSeleccionada = "Persona Yonas";
+                Image nuevoIcono;
+        try {
+            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            persona19.setIcon(new ImageIcon(nuevoIcono));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
     }//GEN-LAST:event_persona19MouseClicked
 
     private void persona20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona20MouseClicked
         System.out.println("Persionaste la persona 20");
                 personaSeleccionada = "Persona Rosa";
+                Image nuevoIcono;
+        try {
+            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            persona20.setIcon(new ImageIcon(nuevoIcono));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
     }//GEN-LAST:event_persona20MouseClicked
 
     private void persona21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona21MouseClicked
         System.out.println("Persionaste la persona 21");
                 personaSeleccionada = "Persona Ed";
+                Image nuevoIcono;
+        try {
+            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            persona21.setIcon(new ImageIcon(nuevoIcono));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
     }//GEN-LAST:event_persona21MouseClicked
 
     private void persona22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona22MouseClicked
         System.out.println("Persionaste la persona 22");
                 personaSeleccionada = "Persona Nathaline";
+                Image nuevoIcono;
+        try {
+            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            persona22.setIcon(new ImageIcon(nuevoIcono));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
     }//GEN-LAST:event_persona22MouseClicked
 
     private void persona23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona23MouseClicked
         System.out.println("Persionaste la persona 23");   
         personaSeleccionada = "Persona Hector";
+        Image nuevoIcono;
+        try {
+            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            persona23.setIcon(new ImageIcon(nuevoIcono));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
     }//GEN-LAST:event_persona23MouseClicked
 
     private void persona24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona24MouseClicked
         System.out.println("Persionaste la persona 24");
                 personaSeleccionada = "Persona Elizabeth";
+                Image nuevoIcono;
+        try {
+            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            persona24.setIcon(new ImageIcon(nuevoIcono));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
     }//GEN-LAST:event_persona24MouseClicked
 
     private void persona25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona25MouseClicked
         System.out.println("Persionaste la persona 25");
                 personaSeleccionada = "Persona Mustafa";
+                Image nuevoIcono;
+        try {
+            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            persona25.setIcon(new ImageIcon(nuevoIcono));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
     }//GEN-LAST:event_persona25MouseClicked
 
     private void persona1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persona1MouseClicked
         System.out.println("Persionaste la persona 1");
                 personaSeleccionada = "Persona Moussa";
+                Image nuevoIcono;
+        try {
+            nuevoIcono = ImageIO.read(getClass().getResource("../IMG/ventana.png"));
+            persona1.setIcon(new ImageIcon(nuevoIcono));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }//GEN-LAST:event_persona1MouseClicked
 
     /**
@@ -598,14 +735,15 @@ public class Game extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Game.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Game1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Game.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Game1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Game.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Game1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Game.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Game1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         
@@ -615,15 +753,13 @@ public class Game extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Game().setVisible(true);
+                new Game1().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel persona1;
     private javax.swing.JLabel persona10;

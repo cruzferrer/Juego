@@ -4,7 +4,6 @@
  */
 package GUI;
 
-import Cliente.Cliente1;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.io.IOException;
@@ -24,7 +23,6 @@ public class Chat extends javax.swing.JFrame {
 
     private final String nom;
      private JTextArea chatTextArea;
-      private Cliente1 cliente;
     /**
      * Creates new form Chat
      */
@@ -36,15 +34,8 @@ public class Chat extends javax.swing.JFrame {
         chatTextArea  = new JTextArea(10, 30);
         chatTextArea.setWrapStyleWord(true);
         chatTextArea.setLineWrap(true);
-        
         initComponents();
         per.setText(nom);
-        
-        
-        Paquete pack = new Paquete();
-        pack.setN(nom);
-        
-        
         FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT); 
 
         panChat.setLayout(flowLayout);
@@ -60,74 +51,8 @@ public class Chat extends javax.swing.JFrame {
         caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
 
         panChat.add(scrollPane);
-        
-        
-        
-        
-       
 
     }
-    
-    
-    public class Paquete implements Serializable {
-        private String n , ip, mensaje;
-
-        public String getN() {
-            return n;
-        }
-
-        public void setN(String n) {
-            this.n = n;
-        }
-
-        public String getIp() {
-            return ip;
-        }
-
-        public void setIp(String ip) {
-            this.ip = ip;
-        }
-
-        public String getMensaje() {
-            return mensaje;
-        }
-
-        public void setMensaje(String mensaje) {
-            this.mensaje = mensaje;
-        }
-        
-        
-        
-        
-        
-    }
-   
-    
-    
-
-public class MensajeDTO implements Serializable {
-    private String nombre;
-    private String ip;
-    private String mensaje;
-
-    public MensajeDTO(String nombre, String ip, String mensaje) {
-        this.nombre = nombre;
-        this.ip = ip;
-        this.mensaje = mensaje;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getIp() {
-        return ip;
-    }
-
-    public String getMensaje() {
-        return mensaje;
-    }
-}
 
     
     /**
@@ -155,6 +80,8 @@ public class MensajeDTO implements Serializable {
         jLabel1.setText("ID");
 
         panChat.setBackground(new java.awt.Color(255, 255, 255));
+        panChat.setEnabled(false);
+        panChat.setFocusable(false);
 
         javax.swing.GroupLayout panChatLayout = new javax.swing.GroupLayout(panChat);
         panChat.setLayout(panChatLayout);
@@ -181,6 +108,11 @@ public class MensajeDTO implements Serializable {
         });
 
         per.setEditable(false);
+        per.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentHidden(java.awt.event.ComponentEvent evt) {
+                perComponentHidden(evt);
+            }
+        });
         jScrollPane1.setViewportView(per);
 
         X.setText("X");
@@ -190,6 +122,7 @@ public class MensajeDTO implements Serializable {
             }
         });
 
+        iP.setEditable(false);
         jScrollPane2.setViewportView(iP);
 
         javax.swing.GroupLayout panLayout = new javax.swing.GroupLayout(pan);
@@ -265,15 +198,14 @@ public class MensajeDTO implements Serializable {
         String IP = iP.getText();
         String N = per.getText();
 
+        
+        
+        
+        
         try {
             Socket sock = new Socket("127.0.0.1", 8080);
 
-            MensajeDTO mensajeDTO = new MensajeDTO(N, IP, mensaje);
 
-            ObjectOutputStream outStream = new ObjectOutputStream(sock.getOutputStream());
-            outStream.writeObject(mensajeDTO);
-            outStream.close();
-            sock.close();
         } catch (IOException ex) {
             Logger.getLogger(Chat.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -284,13 +216,7 @@ public class MensajeDTO implements Serializable {
         }
 
         
-        if (!mensaje.isEmpty()) {
-            chatTextArea.append("usuario: "+mensaje + "\n"); // Agregar el mensaje al JTextArea "per"
-            
-            chatbox.setText("");
-            
-        }
-        
+       
         
        
 
@@ -317,6 +243,10 @@ public class MensajeDTO implements Serializable {
 
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void perComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_perComponentHidden
+        // TODO add your handling code here:
+    }//GEN-LAST:event_perComponentHidden
 
     /**
      * @param args the command line arguments
