@@ -22,6 +22,7 @@ public class Inicios extends Thread{
     ArrayList<Socket> listaCliente;
     int cliente;
     private Servidor servidor;
+    String mensajee;
     
     Inicios(ArrayList<Socket> lista, Socket socket,Servidor servidor) {
         this.listaCliente = lista;
@@ -41,9 +42,8 @@ public class Inicios extends Thread{
                 mensaje = flujo.readUTF();
                 System.out.println("MESNAJE EN ACCESOS  " + mensaje);
                 
-                for (Socket cliente : listaCliente) {
-                enviarMensajeACliente(cliente,mensaje);
-                }
+                mensajee = mensaje;
+                
                 
                 
                 if (mensaje.equals("Partida finalizada")) {
@@ -79,4 +79,8 @@ public class Inicios extends Thread{
         }
     }
     
+    
+    
+    
+
 }

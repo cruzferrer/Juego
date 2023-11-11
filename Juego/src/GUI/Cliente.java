@@ -101,7 +101,8 @@ public class Cliente {
             }
         }
         
-        
+        Inicios inicio = new Inicios();
+
 
         sendButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -111,9 +112,12 @@ public class Cliente {
                 
                 System.out.println(chat);
                
-
                 
                 enviarMensajeAlServidor(nombre+": " + chat);
+                
+                
+                
+                
                 
                  String serv = Leer.recibirMensaje(skCliente);
       
