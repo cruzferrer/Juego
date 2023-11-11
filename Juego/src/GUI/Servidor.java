@@ -1,82 +1,140 @@
+
+package GUI;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Servidor {
+    ArrayList<Socket> listaCliente = new ArrayList();
+    int clientesConectados = 0;
+    private Socket Ganador = null;
+    private int Ganadores = 0;
+    ServerSocket ss;
+    
+    
+    public Servidor(){
+    
+}
 
-    private final List<ObjectOutputStream> clientes = new ArrayList<>();
+   
 
-    public static void main(String[] args) {
-        new Servidor().iniciarServidor();
-    }
-
-    public void iniciarServidor() {
+    public Servidor(int b) {
         try {
-            ServerSocket serverSocket = new ServerSocket(8080);
-            System.out.println("Servidor esperando conexiones...");
+            ss = new ServerSocket(5000);
 
             while (true) {
-                Socket socket = serverSocket.accept();
-                System.out.println("Cliente conectado: " + socket.getInetAddress().getHostAddress());
+                System.out.println("Esperando jugadores....");
+                Socket cliente = ss.accept();
+                System.out.println("Conexión exitosa");
+                listaCliente.add(cliente);
+                clientesConectados++;
 
-                ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
-                clientes.add(outputStream);
+                if (clientesConectados == 2) {
+                    enviarMensajeAClientes("Comenzar");
+                }
 
-                Thread hiloCliente = new Thread(new ManejarCliente(socket, outputStream));
-                hiloCliente.start();
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                Inicios acc = new Inicios(listaCliente, cliente,this);
             }
+
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private class ManejarCliente implements Runnable {
-        private final Socket clienteSocket;
-        private final ObjectOutputStream outputStream;
+    public Socket getClienteGanador() {
+        return Ganador;
+    }
 
-        public ManejarCliente(Socket socket, ObjectOutputStream outputStream) {
-            this.clienteSocket = socket;
-            this.outputStream = outputStream;
-        }
+    public void setClienteGanador(Socket cliente) {
+        Ganador = cliente;
+    }
 
-        @Override
-        public void run() {
-            try {
-                ObjectOutputStream output = new ObjectOutputStream(clienteSocket.getOutputStream());
-                output.writeObject("Conexión exitosa");
-
-                BufferedReader reader = new BufferedReader(new InputStreamReader(clienteSocket.getInputStream()));
-
-                String mensaje;
-                while ((mensaje = reader.readLine()) != null) {
-                    System.out.println("Mensaje recibido: " + mensaje);
-                    enviarMensajeTodos(mensaje);
-                }
-
-            } catch (IOException e) {
-                e.printStackTrace();
+    public void enviarMensajeAGanador(String mensaje) {
+        try {
+            if (Ganador != null) {
+                OutputStream os = Ganador.getOutputStream();
+                DataOutputStream flujoDOS = new DataOutputStream(os);
+                flujoDOS.writeUTF(mensaje);
+                flujoDOS.flush();
             }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+    }
 
-        private void enviarMensajeTodos(String mensaje) {
-            for (ObjectOutputStream cliente : clientes) {
-                try {
-                    cliente.writeObject(mensaje);
-                    cliente.flush();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+    public void enviarMensajeAClientes(String mensaje) {
+        for (Socket cliente : listaCliente) {
+            Inicios.enviarMensajeACliente(cliente, mensaje);
         }
+    }
+    public void detenerServidor() {
+        try {
+            
+            
+            
+            if (ss != null && !ss.isClosed()) {
+                ss.close();
+            }
+
+            System.exit(0); // Sale del programa
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public ArrayList<Socket> getListaClientes() {
+    return listaCliente;
+}
+
+
+
+    public static void main(String[] args) {
+        new Servidor(23);
     }
 }
